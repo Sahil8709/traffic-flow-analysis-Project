@@ -53,4 +53,4 @@ Video Input → YOLOv8 Detection → SORT Tracking → Lane Mapping → Counting
 
 
 
-# video can not be uploaded to git because it is exceeeding maximum limit of 100 mb.
+# video can not be uploaded to git because it is exceeeding maximum limit of 100 mb but used git config --global http.postBuffer 524288000 which is used to increase Git’s buffer size for HTTP POST requests — specifically to help with pushing large files to remote repositories like GitHub and successfully uploaded files.
