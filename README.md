@@ -40,6 +40,56 @@ traffic-flow-analysis/
 *   vehicle_log.csv             # Displayed Vehicle ID, Lane number, Frame count, Timestamp
 *   lane_selector.py            # To seclect polygon coordinates from frame.
 
+Steps to do the projects:
+
+1. Video Input & Preprocessing
+- Load traffic video using OpenCV.
+- Resize or crop if needed for consistent frame dimensions.
+2. Lane Polygon Definition
+- Manually define lane regions using polygon coordinates.
+- Store lane polygons in a config file or directly in the script for flexibility.
+3. Vehicle Detection
+- Use YOLOv8 for real-time object detection.
+- Filter detections to include only relevant classes (e.g., cars, trucks, buses, bikes).
+4. Object Tracking
+- Apply SORT (Simple Online and Realtime Tracking) to assign unique IDs to vehicles across frames.
+- Maintain tracking consistency even with partial occlusions.
+5. Lane Assignment
+- Check if the vehicle’s centroid lies within a defined polygon using OpenCV’s pointPolygonTest.
+- Assign each vehicle to a lane based on its position.
+6. CSV Export
+- Log each vehicle’s:
+- ID
+- Lane number
+- Frame number
+- Timestamp (calculated from FPS)
+- Export logs to a structured CSV file for downstream analysis.
+7. Annotated Video Output
+- Overlay bounding boxes, lane polygons, and vehicle IDs on each frame.
+- Save annotated video using OpenCV’s VideoWriter.
+8. Video Compression
+- Use FFmpeg to compress annotated video for GitHub compatibility.
+- Reduce file size while preserving visual clarity.
+9. GitHub Repo Management
+- Add .gitignore to exclude large files and cache.
+- Use git lfs or FFmpeg compression to stay under GitHub’s 100 MB limit.
+- Structure repo with clear folders: src/, data/, output/, docs/.
+
+
+🔍 Approach
+- Combined YOLOv8 detection with SORT tracking to maintain vehicle identity across frames.
+- Used polygon-based lane mapping to assign vehicles to specific lanes.
+- Exported structured logs and annotated videos for reproducibility and analysis.
+⚠️ Challenges
+- Lane accuracy: Ensuring polygon coordinates matched real-world lanes.
+- Tracking drift: SORT occasionally lost track during occlusions.
+- File size limits: Annotated videos exceeded GitHub’s 100 MB limit.
+- Repo clarity: Needed clean structure and documentation for open-source publishing.
+✅ Solutions
+- Refined polygon coordinates through visual inspection and iterative tuning.
+- Tuned SORT parameters and filtered noisy detections.
+- Integrated FFmpeg for efficient video compression.
+- Created a clean repo structure with a professional README.md, .gitignore, and sample outputs.
 
 
 📄 Technical Summary
